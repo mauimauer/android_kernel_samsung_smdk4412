@@ -24,7 +24,11 @@ obj-$(CONFIG_SENSORS_YAS_ORI)	+= yas_ori_kernel_driver.o
 # optical_sensor
 obj-$(CONFIG_SENSORS_CM3663)	+= cm3663.o
 obj-$(CONFIG_SENSORS_TAOS)		+= taos.o
+ifeq ($(CONFIG_MACH_KONA_SENSOR),y)
+obj-$(CONFIG_SENSORS_GP2A)		+= gp2a_proximity_kona.o gp2a_light_kona.o
+else
 obj-$(CONFIG_SENSORS_GP2A)		+= gp2a_proximity.o gp2a_light.o
+endif
 obj-$(CONFIG_SENSORS_GP2A_ANALOG)	+= gp2a_analog.o
 obj-$(CONFIG_SENSORS_CM36651)		+= cm36651.o
 obj-$(CONFIG_SENSORS_BH1721)		+= bh1721.o
